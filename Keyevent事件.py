@@ -1,9 +1,9 @@
-# conding:utf-8
+# coding:utf-8
 import os
 
 
-class keyevent():
-    '''常用的keyevent事件'''
+class KeyEvent():
+    """常用的keyevent事件"""
     KEYCODE_HOME = 3            #home键
     KEYCODE_MENU = 82           #menu键
     KEYCODE_BACK = 4            #back键
@@ -15,11 +15,12 @@ class keyevent():
     KEYCODE_NOTIFICATION = 83   #解锁
 
 
-def adbKeyEvent(keyname = keyevent.KEYCODE_BACK):
-    '''执行adb keyevent事件 参数从keyevent类里面关联'''
+def adbKeyEvent(keyname=KeyEvent.KEYCODE_BACK):
+    """执行adb keyevent事件 参数从keyevent类里面关联"""
     adb = 'adb shell input keyevent %s' % keyname
     os.system(adb)
 
+
 if __name__ == "__main__":
-    #执行back键操作
-    adbKeyEvent(keyevent.KEYCODE_BACK)
+    # 执行back键操作
+    adbKeyEvent(KeyEvent.KEYCODE_BACK)
