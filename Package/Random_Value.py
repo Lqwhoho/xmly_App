@@ -40,5 +40,3 @@ def random_char_number(l):
         s += random.choice(list_c)  # 随机字符
     return s                       # 返回随机码
 '''
-
-
