@@ -4,14 +4,18 @@ import unittest
 import sys
 import HTMLTestRunner_cn
 import os
-import re
 
 sys.path.append("\Test_Case")
 
-log_file = 'E:\\Python脚本\\APP\\ximalaya\Log'
-ListCase = 'E:\\Python脚本\\APP\\ximalaya\\Test_Case'
+log_file = 'E:\\Python脚本\\APP\\ximalaya\Log'         # 定义手机日志所在文件
+ListCase = 'E:\\Python脚本\\APP\\ximalaya\\Test_Case'  # 定义测试集所在文件夹
 
-
+# pattern='Case_*.py' 规定测试集文件开头命名为Case，也可以是pattern='Case_.py'
+# discover方法找到path 目录下所有文件到的测试用例组装到测试套件
+# 因此可以直接通过run()方法执行discover
+discover = unittest.defaultTestLoader.discover(ListCase, pattern='Case_*.py', top_level_dir=None)
+runner = unittest.TextTestRunner
+'''
 def creatsuitel():
     testunit = unittest.TestSuite()     # 定义一个单元测试容器
     discover = unittest.defaultTestLoader.discover(
@@ -26,12 +30,12 @@ def creatsuitel():
             testunit.addTest(Test_Case)
             print(testunit)
     return testunit
-
-
 AllTestNames = creatsuitel()
+'''
+
 
 '''测试报告存放位置'''
-Now = time.strftime("%Y-%m-%d_%H_%M_%S",time.localtime(time.time()))
+Now = time.strftime("%Y-%m-%d_%H_%M_%S", time.localtime(time.time()))
 FileName = 'E:\\Python脚本\\APP\\ximalaya\\Report\\'+Now+'Result.html'
 FP = open(FileName, 'wb')
 
@@ -50,4 +54,4 @@ runner = HTMLTestRunner_cn.HTMLTestRunner(
     save_last_try=True  # 如果save_last_try 为True ，一个用例仅显示最后一次测试的结果，如果save_last_try为False，则显示所有重试的结果
 )
 
-runner.run(AllTestNames)
+runner.run(discover)
