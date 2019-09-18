@@ -1,10 +1,11 @@
+# coding=utf-8
 """设备初始化信息"""
 from appium import webdriver
 import time
 
 
 def module_devices(self):
-    desired_caps = {}
+    desired_caps = dict()
     desired_caps['platformName'] = 'Android'  # 声明是iOS还是Android系统
     desired_caps['platformVersion'] = '5.1.1'  # Android内核版本号
     desired_caps['deviceName'] = '127.0.0.1:62025'  # 连接的设备名称
