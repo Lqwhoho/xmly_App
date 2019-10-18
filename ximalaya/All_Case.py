@@ -40,8 +40,14 @@ FileName = 'E:\\Python脚本\\APP\\ximalaya\\Report\\'+Now+'Result.html'
 FP = open(FileName, 'wb')
 
 '''获取手机log日志，存放到电脑上'''
-logname = log_file + "\\"+Now+r"log.txt"
-logcat_cmd = "adb -s 127.0.0.1:62025 logcat  -v time >%s" % logname
+# logcat日志存放路径，文件名称为设备名称+当前时间+log.txt
+device_name1 = "Mi_Note2" + '_'
+device_name = "127.0.0.1:62025"
+logname = log_file + "\\"+device_name1+Now+r"log.txt"
+# logcat_cmd = "adb -s 127.0.0.1:62025 logcat  -v time >%s" % logname
+package_name = "com.ximalaya.ting.android"
+logcat_cmd = "adb -s %s logcat | find \"%s\" >%s" % (device_name, package_name, logname)
+# 执行cmd命令
 os.popen(logcat_cmd)
 
 
