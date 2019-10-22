@@ -1,7 +1,7 @@
 #!C:\Users\liuquanwei\AppData\Local\Programs\Python\Python37
 # -*- coding:utf-8 -*-
 # @Author：liuquanwei
-# @Time：2019/10/18 08:55
+# @Time：2019/10/22 15::14
 # @Filename：Reissue_application.py
 # @Desc：====================================================
 """
