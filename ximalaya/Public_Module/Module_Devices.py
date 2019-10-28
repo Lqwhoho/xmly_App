@@ -2,6 +2,9 @@
 """设备初始化信息"""
 from appium import webdriver
 import time
+import os
+# 获取当前项目的根路径
+Apk_Path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
 
 def module_devices(self):
@@ -11,8 +14,9 @@ def module_devices(self):
     desired_caps['deviceName'] = '127.0.0.1:62025'  # 连接的设备名称
     # desired_caps['platformVersion'] = '7.1.2'  # Android内核版本号
     # desired_caps['deviceName'] = '127.0.0.1:62027'  # 连接的设备名称
-    desired_caps['appPackage'] = 'com.ximalaya.ting.android'  # apk的包名
-    desired_caps['appActivity'] = '.host.activity.MainActivity'  # apk的launcherActivity
+    desired_caps['app'] = Apk_Path + "\\App_Package\\MainApp_v6.6.21.3_c258_release_proguard_191017_and-a1.apk"
+    # desired_caps['appPackage'] = 'com.ximalaya.ting.android'  # apk的包名
+    # desired_caps['appActivity'] = '.host.activity.MainActivity'  # apk的launcherActivity
     desired_caps['unicodeKeyboard'] = True  # 使用Unicode编码方式发送字符串
     desired_caps['resetKeyboard'] = True  # 隐藏键盘
     desired_caps['Reset'] = False  # 是否重新安装apk
